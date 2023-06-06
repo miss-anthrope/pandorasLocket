@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pandora's Locket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5e1e6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(128, 0, 128, 0.3);
+        }
+
+        .header {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #800080;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #800080;
+            border-radius: 5px 0 0 5px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 10px 20px;
+            background-color: #800080;
+            color: #fff;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result {
+            width: 100%;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom right, #800080, #ff69b4);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(128, 0, 128, 0.3);
+            outline: 2px solid #800080;
+        }
+
+        .result-label {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .result-link {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 5px;
+        }
+
+        .result-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function search() {
+            var name = document.getElementById('nameInput').value.trim();
+            var resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            if (name !== '') {
+                var googleUrl = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+                var bingUrl = 'https://www.bing.com/search?q=' + encodeURIComponent(name);
+                var linkedinUrl = 'https://www.linkedin.com/search/results/all/?keywords=' + encodeURIComponent(name);
+                var spokeoUrl = 'https://www.spokeo.com/' + encodeURIComponent(name);
+                var thatsThemUrl = 'https://thatsthem.com/people-search?q=' + encodeURIComponent(name);
+                var radarisUrl = 'https://radaris.com/?q=' + encodeURIComponent(name);
+                var snitchNameUrl = 'http://snitch.name/' + encodeURIComponent(name);
+                var anywhoUrl = 'https://www.anywho.com/name/' + encodeURIComponent(name);
+
+                var googleResult = document.createElement('div');
+                googleResult.classList.add('result');
+
+                var googleLabel = document.createElement('div');
+                googleLabel.classList.add('result-label');
+                googleLabel.textContent = 'Results from Google:';
+
+                var googleLink = document.createElement('a');
+                googleLink.href = googleUrl;
+                googleLink.classList.add('result-link');
+                googleLink.textContent = 'Go to Google Search';
+
+                googleResult.appendChild(googleLabel);
+                googleResult.appendChild(googleLink);
+                resultsContainer.appendChild(googleResult);
+
+                var bingResult = document.createElement('div');
+                bingResult.classList.add('result');
+
+                var bingLabel = document.createElement('div');
+                bingLabel.classList.add('result-label');
+                bingLabel.textContent = 'Results from Bing:';
+
+                var bingLink = document.createElement('a');
+                bingLink.href = bingUrl;
+                bingLink.classList.add('result-link');
+                bingLink.textContent = 'Go to Bing Search';
+
+                bingResult.appendChild(bingLabel);
+                bingResult.appendChild(bingLink);
+                resultsContainer.appendChild(bingResult);
+
+                var linkedinResult = document.createElement('div');
+                linkedinResult.classList.add('result');
+
+                var linkedinLabel = document.createElement('div');
+                linkedinLabel.classList.add('result-label');
+                linkedinLabel.textContent = 'Results from LinkedIn:';
+
+                var linkedinLink = document.createElement('a');
+                linkedinLink.href = linkedinUrl;
+                linkedinLink.classList.add('result-link');
+                linkedinLink.textContent = 'Go to LinkedIn Search';
+
+                linkedinResult.appendChild(linkedinLabel);
+                linkedinResult.appendChild(linkedinLink);
+                resultsContainer.appendChild(linkedinResult);
+
+                var spokeoResult = document.createElement('div');
+                spokeoResult.classList.add('result');
+
+                var spokeoLabel = document.createElement('div');
+                spokeoLabel.classList.add('result-label');
+                spokeoLabel.textContent = 'Results from Spokeo:';
+
+                var spokeoLink = document.createElement('a');
+                spokeoLink.href = spokeoUrl;
+                spokeoLink.classList.add('result-link');
+                spokeoLink.textContent = 'Go to Spokeo Search';
+
+                spokeoResult.appendChild(spokeoLabel);
+                spokeoResult.appendChild(spokeoLink);
+                resultsContainer.appendChild(spokeoResult);
+
+                var thatsThemResult = document.createElement('div');
+                thatsThemResult.classList.add('result');
+
+                var thatsThemLabel = document.createElement('div');
+                thatsThemLabel.classList.add('result-label');
+                thatsThemLabel.textContent = 'Results from ThatsThem:';
+
+                var thatsThemLink = document.createElement('a');
+                thatsThemLink.href = thatsThemUrl;
+                thatsThemLink.classList.add('result-link');
+                thatsThemLink.textContent = 'Go to ThatsThem Search';
+
+                thatsThemResult.appendChild(thatsThemLabel);
+                thatsThemResult.appendChild(thatsThemLink);
+                resultsContainer.appendChild(thatsThemResult);
+
+                var radarisResult = document.createElement('div');
+                radarisResult.classList.add('result');
+
+                var radarisLabel = document.createElement('div');
+                radarisLabel.classList.add('result-label');
+                radarisLabel.textContent = 'Results from Radaris:';
+
+                var radarisLink = document.createElement('a');
+                radarisLink.href = radarisUrl;
+                radarisLink.classList.add('result-link');
+                radarisLink.textContent = 'Go to Radaris Search';
+
+                radarisResult.appendChild(radarisLabel);
+                radarisResult.appendChild(radarisLink);
+                resultsContainer.appendChild(radarisResult);
+
+                var snitchNameResult = document.createElement('div');
+                snitchNameResult.classList.add('result');
+
+                var snitchNameLabel = document.createElement('div');
+                snitchNameLabel.classList.add('result-label');
+                snitchNameLabel.textContent = 'Results from SnitchName:';
+
+                var snitchNameLink = document.createElement('a');
+                snitchNameLink.href = snitchNameUrl;
+                snitchNameLink.classList.add('result-link');
+                snitchNameLink.textContent = 'Go to SnitchName Search';
+
+                snitchNameResult.appendChild(snitchNameLabel);
+                snitchNameResult.appendChild(snitchNameLink);
+                resultsContainer.appendChild(snitchNameResult);
+
+                var anywhoResult = document.createElement('div');
+                anywhoResult.classList.add('result');
+
+                var anywhoLabel = document.createElement('div');
+                anywhoLabel.classList.add('result-label');
+                anywhoLabel.textContent = 'Results from Anywho:';
+
+                var anywhoLink = document.createElement('a');
+                anywhoLink.href = anywhoUrl;
+                anywhoLink.classList.add('result-link');
+                anywhoLink.textContent = 'Go to Anywho Search';
+
+                anywhoResult.appendChild(anywhoLabel);
+                anywhoResult.appendChild(anywhoLink);
+                resultsContainer.appendChild(anywhoResult);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchInput = document.getElementById('nameInput');
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById('searchButton').click();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Pandora's Locket</h1>
+        <div class="search-form">
+            <input type="text" id="nameInput" class="search-input" placeholder="Enter a person's name" required>
+            <button type="button" id="searchButton" class="search-button" onclick="search()">Search</button>
+        </div>
+        <div id="results" class="results-container"></div>
+    </div>
+</body>
+</html>
